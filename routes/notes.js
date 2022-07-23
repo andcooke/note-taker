@@ -8,7 +8,7 @@ notes.get('/', (req, res) => {
   readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
 });
 
-// POST Route for a new UX/UI tip
+// POST Route for a new note
 notes.post('/', (req, res) => {
   console.info(`${req.method} request received to add a note`);
   console.log(req.body);
@@ -21,7 +21,7 @@ notes.post('/', (req, res) => {
       text,
     };
 
-    readAndAppend(newNote, './db/notes.json');
+    readAndAppend(newNote, './db/db.json');
     res.json(`Tip added successfully 🚀`);
   } else {
     res.error('Error in adding tip');
