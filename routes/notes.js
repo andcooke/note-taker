@@ -34,19 +34,19 @@ notes.post('/', (req, res) => {
 
 
 
-// notes.get('/notes/:id', (req, res) => {
-//   console.info(`${req.method} request received to add a note`);
-//   const requestedNote = req.params.id.toLowerCase();
+notes.delete('/:id', (req, res) => {
+  console.info(`${req.method} request received to delete a note`);
+  const requestedNote = req.params.id.toLowerCase();
 
-//   for (let i = 0; i < db.length; i++) {
-//     if (requestedNote === db[i].id.toLowerCase()){
-//       db.splice(i, 1);
-//     }
-//   }
+  for (let i = 0; i < db.length; i++) {
+    if (requestedNote === db[i].id.toLowerCase()){
+      db.splice(i, 1);
+    }
+  }
 
-//   writeToFile('./db/db.json', db);
-  
-// } )
+  writeToFile('./db/db.json', db);
+  readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
+} )
 
 
 module.exports = notes;
