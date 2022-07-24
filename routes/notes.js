@@ -1,6 +1,7 @@
 const notes = require('express').Router();
 const uuid = require('../helpers/uuid')
-const { readFromFile, readAndAppend } = require('../helpers/fsUtils');
+const { readFromFile, writeToFile, readAndAppend } = require('../helpers/fsUtils');
+const db = require('../db/db.json');
 
 
 // GET Route for retrieving all the notes
@@ -30,6 +31,22 @@ notes.post('/', (req, res) => {
     res.error('Error in adding note');
   }
 });
+
+
+
+// notes.get('/notes/:id', (req, res) => {
+//   console.info(`${req.method} request received to add a note`);
+//   const requestedNote = req.params.id.toLowerCase();
+
+//   for (let i = 0; i < db.length; i++) {
+//     if (requestedNote === db[i].id.toLowerCase()){
+//       db.splice(i, 1);
+//     }
+//   }
+
+//   writeToFile('./db/db.json', db);
+  
+// } )
 
 
 module.exports = notes;
