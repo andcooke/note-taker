@@ -33,6 +33,7 @@ notes.post('/', (req, res) => {
 });
 
 
+// DELETE Route to delete a note
 
 notes.delete('/:id', (req, res) => {
   console.info(`${req.method} request received to delete a note`);
@@ -43,7 +44,6 @@ notes.delete('/:id', (req, res) => {
       db.splice(i, 1);
     }
   }
-
   writeToFile('./db/db.json', db);
   readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
 } )
